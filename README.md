@@ -1,5 +1,11 @@
 # DiscordPoweruser
 
+Okay. Now i want to create a json file which has contains the ids and names. the file should have the name given by the user + "_" + the id of the server. how can i do this?
+
+- [x] creating a json file with the data
+- [x] make everything dynamically
+- [ ] testing withb bigger server 
+
 
 - [ ] Get all the user names + user ids and save them in a json file, where the filename is the name of the server
 {id:"some id", name:"some name"}
