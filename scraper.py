@@ -27,4 +27,23 @@ member_list_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
 
 member_list_button.click()
 
-time.sleep(15)
+time.sleep(5)
+
+index = 0
+users = []
+
+#before i scrape usernames i can also start first with user containers only
+
+while True:
+    user_containers = driver.find_elements(By.XPATH, f'//div[@aria-expanded="false" and @tabindex="-1" and @index="{index}" and @role="listitem"]')
+    if user_containers:
+        user_container = user_containers[0]
+        username = user_container.find_element(By.CSS_SELECTOR, 'span[class*="username-"]').text
+        users.append(username)
+        index += 1
+    else:
+        break
+
+print(users)
+
+driver.quit()
