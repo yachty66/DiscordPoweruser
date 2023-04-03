@@ -1,5 +1,10 @@
 # DiscordPoweruser
 
+
+- [ ] Get all the user names + user ids and save them in a json file, where the filename is the name of the server
+{id:"some id", name:"some name"}
+- [ ]  
+
 ## Goal
 
 - Make a list with all Discord users
@@ -15,3 +20,4 @@ First I need to achieve sending a message from my wobbert acount to yachty. if t
 
 I want to iterate 
 
+i imagine a python script which takes one argument, the server name and than puts all the data into sheet
