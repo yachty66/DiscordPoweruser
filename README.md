@@ -4,7 +4,9 @@ Okay. Now i want to create a json file which has contains the ids and names. the
 
 - [x] creating a json file with the data
 - [x] make everything dynamically
-- [ ] testing withb bigger server 
+
+- [ ] change code so that only user without an profile are getting scraped 
+- [ ] testing with bigger server chess.com to get all chess leads
 
 
 - [ ] Get all the user names + user ids and save them in a json file, where the filename is the name of the server
