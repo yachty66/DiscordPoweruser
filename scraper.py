@@ -18,9 +18,9 @@ if len(sys.argv) != 3:
 server_id = sys.argv[1]
 filename = sys.argv[2]
 output_filename = f"{filename}_{server_id}.json"
-TOKEN = config.token
-EMAIL = "wobbert2503@gmail.com"
-PASSWORD = config.password
+TOKEN = config.token_max
+EMAIL = "maxhager28@gmail.com"
+PASSWORD = config.password_max
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = "/Applications/AppicationsMe/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -36,20 +36,21 @@ password_field.send_keys(PASSWORD)
 login_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@type='submit']")))
 login_button.click()
 
-member_list_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[@aria-label='Show Member List']")))
+time.sleep(10)
 
-member_list_button.click()
+member_list_button = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, "//div[@aria-label='Show Member List']")))
+driver.execute_script("arguments[0].click()", member_list_button)
 
 time.sleep(5)
 
-index = 89
+index = 0
 users = []
-#the problem is that the content is not loaded
+
+
+member_list_container = driver.find_element(By.XPATH, '//div[contains(@class, "members-3WRCEx")]')
 
 while True:
     user_containers = driver.find_elements(By.XPATH, f'//div[@aria-expanded="false" and @tabindex="-1" and @index="{index}" and @role="listitem"]')
-    print(index)
-    print(user_containers)
     if user_containers:
         user_container = user_containers[0]
         username = user_container.find_element(By.CSS_SELECTOR, 'span[class*="username-"]').text
@@ -67,6 +68,10 @@ while True:
 
         users.append((username, user_id))
         index += 1
+        
+        # Scroll down in the member list container
+        driver.execute_script("arguments[0].scrollIntoView(true)", user_container)
+        time.sleep(1)
     else:
         break
 
